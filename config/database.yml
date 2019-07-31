@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: 'postgres'
+  password: postgres
+
+development:
+  <<: *default
+  database: find_route_development
+
+test:
+  <<: *default
+  database: find_route_test
+
+production:
+  <<: *default
+  database: find_route_production
+  username: find_route
+  password: <%= ENV['FIND_ROUTE_DATABASE_PASSWORD'] %>
